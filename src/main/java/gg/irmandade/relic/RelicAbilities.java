@@ -29,7 +29,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.projectile.WindCharge;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.Blocks;
@@ -273,7 +274,10 @@ public final class RelicAbilities {
         if (p.getCooldowns().isOnCooldown(stack)) return InteractionResult.FAIL;
         ServerLevel level = p.level();
         for (int i = 0; i < 2; i++) {
-            WindCharge charge = new WindCharge(p, level, p.getX(), p.getEyeY(), p.getZ());
+            var charge = EntityType.WIND_CHARGE.create(level, EntitySpawnReason.TRIGGERED);
+            if (charge == null) continue;
+            charge.setOwner(p);
+            charge.setPos(p.getX(), p.getEyeY(), p.getZ());
             float yawOffset = i == 0 ? -4.0F : 4.0F;
             charge.shootFromRotation(p, p.getXRot(), p.getYRot() + yawOffset, 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(charge);
