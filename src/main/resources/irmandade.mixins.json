@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "gg.irmandade.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["ItemEntityMixin", "LivingEntityTotemMixin", "ConnectionAccessor", "PlayerListMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

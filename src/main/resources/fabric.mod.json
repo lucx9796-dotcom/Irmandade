@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "irmandade",
+  "version": "${version}",
+  "name": "Irmandade",
+  "description": "IMDD - Relíquias, Dia do Expurgo, tab e muito mais.",
+  "authors": ["LucxMC_"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["gg.irmandade.Irmandade"],
+    "client": ["gg.irmandade.client.IrmandadeClient"]
+  },
+  "mixins": ["irmandade.mixins.json", {"config": "irmandade.client.mixins.json", "environment": "client"}],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

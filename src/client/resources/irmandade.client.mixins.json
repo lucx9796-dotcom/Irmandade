@@ -1,0 +1,8 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "gg.irmandade.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["SkyRendererMixin"],
+  "injectors": { "defaultRequire": 0 }
+}
