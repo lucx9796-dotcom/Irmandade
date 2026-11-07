@@ -1,0 +1,32 @@
+
+name: Compilar Mod Fabric
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Compilar mod
+        run: bash ./gradlew build --no-daemon
+
+      - name: Salvar arquivo JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: Irmandade-Fabric-1.21.11
+          path: build/libs/*.jar
